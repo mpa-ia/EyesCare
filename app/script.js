@@ -20,9 +20,14 @@ class App extends React.Component {
           <p>This app will help you track your time and inform you when it's time to rest.</p>
         </section>
         ): ''}
-
-        <img src="./images/work.png" />
-        <img src="./images/rest.png" />
+        
+        {this.state.status == 'work'? (
+          <img src="./images/work.png" />
+        ) : ''}
+        {this.state.status == 'rest'? (
+          <img src="./images/rest.png" />
+        ) : ''}
+ 
         <div className="timer">
           18:23
         </div>
