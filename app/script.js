@@ -28,11 +28,17 @@ class App extends React.Component {
           <img src="./images/rest.png" />
         ) : ''}
  
-        <div className="timer">
-          18:23
-        </div>
+         {this.state.status !== 'off'? (
+           <section>
+            <div className="timer">
+              18:23
+            </div>
+            <button className="btn">Stop</button>
+           </section>
+         ) : ''} 
+
         <button className="btn">Start</button>
-        <button className="btn">Stop</button>
+
         <button className="btn btn-close">X</button>
       </div>
     )
