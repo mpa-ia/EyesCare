@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+// import AppDescription from './components/AppDescription/AppDescription';
 
 class App extends React.Component {
 
@@ -13,8 +14,13 @@ class App extends React.Component {
     return (
       <div>
         <h1>Protect your eyes</h1>
-        <p>According to optometrists in order to save your eyes, you should follow the 20/20/20. It means you should to rest your eyes every 20 minutes for 20 seconds by looking more than 20 feet away.</p>
-        <p>This app will help you track your time and inform you when it's time to rest.</p>
+        {this.state.status == 'off'? (
+        <section>
+          <p>According to optometrists in order to save your eyes, you should follow the 20/20/20. It means you should to rest your eyes every 20 minutes for 20 seconds by looking more than 20 feet away.</p>
+          <p>This app will help you track your time and inform you when it's time to rest.</p>
+        </section>
+        ): ''}
+
         <img src="./images/work.png" />
         <img src="./images/rest.png" />
         <div className="timer">
