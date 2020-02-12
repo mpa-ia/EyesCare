@@ -10,6 +10,14 @@ class App extends React.Component {
     timer: null,
   }
 
+  formatTime (totalSeconds) {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = Math.floor(totalSeconds - (minutes * 60));
+
+    const output = `${(minutes < 10? `0${minutes}` : minutes)}:${(seconds < 10? `0${seconds}` : seconds)}`;
+    return output;
+  }
+
   render() {
     return (
       <div>
@@ -32,7 +40,7 @@ class App extends React.Component {
          {this.state.status !== 'off'? (
            <section>
             <div className="timer">
-              18:23
+              {this.formatTime(this.state.time)}
             </div>
             <button className="btn">Stop</button>
            </section>
