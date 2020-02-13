@@ -19,7 +19,12 @@ class App extends React.Component {
   }
 
   step () {
-    console.log('step ON')
+    this.setState({ time: this.state.time - 1});
+    this.state.time === 0? (
+      this.setState ({
+        status: this.state.status === 'work'? 'rest' : 'work',
+        time: this.state.status === 'work'? 20 : 1200,
+      })) : '';
   }
 
   startTimer = () => {
