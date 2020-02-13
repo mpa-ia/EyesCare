@@ -17,14 +17,20 @@ class App extends React.Component {
     const output = `${(minutes < 10? `0${minutes}` : minutes)}:${(seconds < 10? `0${seconds}` : seconds)}`;
     return output;
   }
+  playBell () {
+    const gong = new Audio('./sounds/bell.wav');
+    gong.play();
+  }
 
   step () {
     this.setState({ time: this.state.time - 1});
-    this.state.time === 0? (
+    if(this.state.time === 0) {
       this.setState ({
         status: this.state.status === 'work'? 'rest' : 'work',
         time: this.state.status === 'work'? 20 : 1200,
-      })) : '';
+      });
+      this.playBell();
+     }
   }
 
   timerInterval = setInterval(() => this.step(), 1000);
