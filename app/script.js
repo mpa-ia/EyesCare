@@ -27,14 +27,28 @@ class App extends React.Component {
       })) : '';
   }
 
+  timerInterval = setInterval(() => this.step(), 1000);
+
   startTimer = () => {
     this.setState({
       status: 'work',
       time: 1200,
-      timer: setInterval(() => this.step(), 1000)
+      timer: this.timerInterval,
     });
   }
 
+  stopTimer = () => {
+    this.setState({
+      status: 'off',
+      time: 0,
+      timer: null,
+    })
+    
+  }
+  componentWillUnmount () {
+    clearInterval(this.timerInterval)
+  }
+  
   render() {
     return (
       <div>
@@ -59,7 +73,7 @@ class App extends React.Component {
             <div className="timer">
               {this.formatTime(this.state.time)}
             </div>
-            <button className="btn">Stop</button>
+            <button className="btn" onClick={this.stopTimer}>Stop</button>
            </section>
          ) : ''} 
         <button className="btn btn-close">X</button>
