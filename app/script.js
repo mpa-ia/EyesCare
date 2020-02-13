@@ -45,10 +45,13 @@ class App extends React.Component {
     })
     
   }
+  closeApp () {
+    window.close();
+  }
   componentWillUnmount () {
     clearInterval(this.timerInterval)
   }
-  
+
   render() {
     return (
       <div>
@@ -76,7 +79,7 @@ class App extends React.Component {
             <button className="btn" onClick={this.stopTimer}>Stop</button>
            </section>
          ) : ''} 
-        <button className="btn btn-close">X</button>
+        <button className="btn btn-close" onClick={this.closeApp}>X</button>
       </div>
     )
   }
